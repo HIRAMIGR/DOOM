@@ -4,18 +4,16 @@ public class Bullet : MonoBehaviour
 {
 [SerializeField]
 private float speed = 20f;
-private float damage = 10f;
+protected float damage = 10f;
 public float Damage { set { damage = value; } }
-void Awake()
+void OnEnable()
     {
         GetComponent<Rigidbody>().linearVelocity = transform.forward * speed;
     }
-private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
+public virtual void OnCollisionEnter(Collision collision)
+    
         {
-            collision.gameObject.GetComponent<Health>().TakeDamage(damage);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
-    }
+        
 }

@@ -343,7 +343,7 @@ MonoBehaviour:
   damage: 20
   speed: 2
   yPosition: 1
-  pushForce: 5
+  pushForce: 200
 --- !u!1 &6799602984651742831
 GameObject:
   m_ObjectHideFlags: 0
