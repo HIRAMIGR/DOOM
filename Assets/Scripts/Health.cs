@@ -11,8 +11,11 @@ private float maxHealth = 100f;
 private UnityEvent onDeath;
 [SerializeField]
 private UnityEvent onDamageTaken;
+[SerializeField]
+private UnityEvent<Transform> onHeal;
 private float currentHealth;
 public float CurrentHealth => currentHealth;
+public float MaxHealth => maxHealth;
 public void InitializeHealth()
 {
     currentHealth = maxHealth;
@@ -27,6 +30,7 @@ public void Heal(float amount)
         currentHealth += amount;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         UpdateHealthBar();
+        onHeal?.Invoke(transform);
     }
 public void TakeDamage (float damage)
 {
