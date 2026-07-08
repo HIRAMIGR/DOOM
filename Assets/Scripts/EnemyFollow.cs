@@ -51,6 +51,7 @@ public class EnemyFollow : Enemy
         private void Update()
     {
         if (!isFollowing) return;
+        if (CheckWin()) return;
         Vector3 targetPosition = new Vector3(player.position.x, yPosition, player.position.z);
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed*Time.deltaTime);
         transform.LookAt(targetPosition);

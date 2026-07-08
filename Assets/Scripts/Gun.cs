@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System.Collections;
  
 public class Gun: MonoBehaviour
 {
@@ -37,13 +38,31 @@ rotateScript.canRotate = false;
 gameObject.GetComponent<Collider>().enabled = false;
 ChargeGun(false);
 }
-public void ChargeGun(bool playAnimation = true)
+    public void ChargeGun(bool playAnimation = true)
     {
         if (totalBullets <= 0 || cartridgeBullets == Gundata.cartridgeSize) return;
-            SoundManager.instance.Play(Gundata.reloadSoundName);
+        SoundManager.instance.Play(Gundata.reloadSoundName);
+        if (playAnimation)
+        {
+            StartCoroutine(ChargeGunCoroutine());
+        }
+        else
+        {
+            AddBullets();
+        }
+    }
+private IEnumerator ChargeGunCoroutine()
+    {
+        animator.Play("Charge", 0, 0f);
+        yield return null;
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        AddBullets();
+    }
+
+private void AddBullets()
+    {
         cartridgeBullets = Mathf.Min(Gundata.cartridgeSize, totalBullets);
         totalBullets -= cartridgeBullets;
-        if (playAnimation) animator.Play("Charge", 0, 0f);
         UpdateAmmoText();
     }
     private void UpdateAmmoText()

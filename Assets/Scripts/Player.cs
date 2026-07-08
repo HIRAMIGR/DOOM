@@ -14,11 +14,21 @@ public class Player : MonoBehaviour
     private UnityEvent onGunGrabbed;
     [SerializeField]
     private UnityEvent onGunDropped;
+    private Health health;
+    private Rigidbody rb;
+    public float CurrentHealth => health.CurrentHealth;
     private Gun currentGun;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+        health = GetComponent<Health>();
+    }
+
     private void Start()
     {
      onGunDropped?.Invoke();
-     GetComponent<Health>().InitializeHealth();  
+     health.InitializeHealth();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -51,6 +61,15 @@ public class Player : MonoBehaviour
     public void Pushback(Transform enemy, float force)
     {
         Vector3 pushDirection = (transform.position - enemy.position).normalized;
-        GetComponent<Rigidbody>().AddForce(pushDirection * force, ForceMode.Impulse);
+        rb.AddForce(pushDirection * force, ForceMode.Impulse);
+    }
+    public void Die()
+    {
+        DropGun();
+        GetComponent<FirstPersonMovement>().enabled = false;
+        GetComponentInChildren<FirstPersonLook>().enabled = false;
+        rb.isKinematic = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
