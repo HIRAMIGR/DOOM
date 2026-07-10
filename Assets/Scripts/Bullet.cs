@@ -24,7 +24,7 @@ void OnEnable()
     }
     public virtual void OnCollisionEnter(Collision collision)
     {
-        string tg = collision.gameObject.tag;
+        string tag = collision.gameObject.tag;
         Debug.Log("tag " + tag + collision.gameObject.name);
         if (tag == "Enemy")
         {
