@@ -363,7 +363,7 @@ MonoBehaviour:
   damage: 20
   speed: 4
   yPosition: 2
-  pushForce: 200
+  pushForce: 3
 --- !u!95 &8415300603639425077
 Animator:
   serializedVersion: 7

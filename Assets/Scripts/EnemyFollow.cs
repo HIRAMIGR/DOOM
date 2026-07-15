@@ -61,7 +61,7 @@ public class EnemyFollow : Enemy
         if (collision.gameObject.CompareTag("Player"))
         {
              SoundManager.instance.Play("cacodemon_attack");
-            collision.gameObject.GetComponent<Player>().Pushback(transform, pushForce);
+            collision.gameObject.GetComponent<Player>().PushBack(transform, pushForce);
             collision.gameObject.GetComponent<Health>().TakeDamage(damage);
         }
     }
