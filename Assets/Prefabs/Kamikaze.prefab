@@ -298,8 +298,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.6748152, y: 2.836481, z: 1.5195904}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.5263758, y: 2.836481, z: 1.1148834}
+  m_Center: {x: -0.12393904, y: 0, z: -0.058706284}
 --- !u!114 &7459303790752412680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +363,7 @@ MonoBehaviour:
   damage: 20
   speed: 4
   yPosition: 2
-  pushForce: 3
+  pushForce: 1
 --- !u!95 &8415300603639425077
 Animator:
   serializedVersion: 7
