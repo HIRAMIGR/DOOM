@@ -14,15 +14,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1905646151969367787, guid: 3c9ea583b6f8d004b8af5e930b7ec3ae, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.4
+      value: -5.842026
       objectReference: {fileID: 0}
     - target: {fileID: 1905646151969367787, guid: 3c9ea583b6f8d004b8af5e930b7ec3ae, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.56
+      value: 0.42551997
       objectReference: {fileID: 0}
     - target: {fileID: 1905646151969367787, guid: 3c9ea583b6f8d004b8af5e930b7ec3ae, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -52.04
+      value: 6.1379576
       objectReference: {fileID: 0}
     - target: {fileID: 1905646151969367787, guid: 3c9ea583b6f8d004b8af5e930b7ec3ae, type: 3}
       propertyPath: m_LocalRotation.w
@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 8277625711690631981}
+    - target: {fileID: 5953444365455200286, guid: 3c9ea583b6f8d004b8af5e930b7ec3ae, type: 3}
+      propertyPath: fireParticlesPrefab
+      value: 
+      objectReference: {fileID: 5880797563127281583, guid: 53ad60ceeea51b9488b16bf733493d14, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7512338444510077071, guid: 3c9ea583b6f8d004b8af5e930b7ec3ae, type: 3}

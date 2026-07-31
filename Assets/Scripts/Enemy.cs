@@ -13,9 +13,11 @@ public class Enemy : MonoBehaviour
    private UnityEvent onDied = new UnityEvent();
    public UnityEvent OnDied => onDied;
    protected bool didWin = false;
+   protected Rigidbody rb;
     protected Health playerHealth;
    private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         health = GetComponent<Health>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerHealth = player.GetComponent<Health>();
