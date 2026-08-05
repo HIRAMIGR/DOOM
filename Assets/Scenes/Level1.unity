@@ -1991,6 +1991,7 @@ Transform:
   - {fileID: 729630289}
   - {fileID: 767347817}
   - {fileID: 562175587}
+  - {fileID: 1988511305}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &142954487
@@ -3174,7 +3175,7 @@ Light:
   serializedVersion: 13
   m_Type: 1
   m_Color: {r: 0.004182993, g: 0.4433962, b: 0, a: 1}
-  m_Intensity: 1.33
+  m_Intensity: 4.1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3237,7 +3238,7 @@ Transform:
   m_GameObject: {fileID: 234172338}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5594715, y: 0.4356101, z: -0.44662008, w: 0.5456795}
-  m_LocalPosition: {x: 0, y: 27.2, z: -9.9}
+  m_LocalPosition: {x: 0, y: 22.69, z: -9.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6465,7 +6466,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4207293392497186, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1243454231}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1773623360729482, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       insertIndex: -1
@@ -6496,39 +6500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c9aa5b7502d71418b118335c99316c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  gunPosition: {fileID: 567198039}
-  inputManager: {fileID: 2084113254}
-  ammoText: {fileID: 560450616}
-  onGunGrabbed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1539010494}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  onGunDropped:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1539010494}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  gunManager: {fileID: 1243454232}
 --- !u!114 &567198041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6612,6 +6584,11 @@ MonoBehaviour:
           m_StringArgument: health_pickup
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!4 &567198042 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4207293392497186, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
+  m_PrefabInstance: {fileID: 567198037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &570377827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12557,6 +12534,83 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1189886368449285339, guid: 31505bc92b33c254cb571d93ba0131db, type: 3}
+--- !u!1 &1243454230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1243454231}
+  - component: {fileID: 1243454232}
+  m_Layer: 0
+  m_Name: GunManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1243454231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243454230}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 567198042}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1243454232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243454230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ed1b6e00910ed44b8e41f27d8c3a11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunManager
+  onGunGrabbed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1539010494}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onGunDropped:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1539010494}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gunPosition: {fileID: 567198039}
+  ammoText: {fileID: 560450616}
+  inputManager: {fileID: 2084113254}
 --- !u!1001 &1261038564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13521,9 +13575,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   enemySpawns:
-  - enemyPrefab: {fileID: 3624247366876963491, guid: 9f47f77cffb44d04cbfd309e36f3041a, type: 3}
-    spawnPoint: {fileID: 1053484115}
   - enemyPrefab: {fileID: 6407687913735209133, guid: 09e04476ecac3d2458128f6b6b280240, type: 3}
+    spawnPoint: {fileID: 1053484115}
+  - enemyPrefab: {fileID: 3624247366876963491, guid: 9f47f77cffb44d04cbfd309e36f3041a, type: 3}
     spawnPoint: {fileID: 1613479272}
   onEnemiesSpawned:
     m_PersistentCalls:
@@ -14820,6 +14874,63 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1189886368449285339, guid: 31505bc92b33c254cb571d93ba0131db, type: 3}
+--- !u!1001 &1552525467
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 141997873}
+    m_Modifications:
+    - target: {fileID: 7770028619364869488, guid: 2df8e5b5b1c86b94a85f158f35c858e9, type: 3}
+      propertyPath: m_Name
+      value: AutomaticGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 9086838084557132000, guid: 2df8e5b5b1c86b94a85f158f35c858e9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.2835555
+      objectReference: {fileID: 0}
+    - target: {fileID: 9086838084557132000, guid: 2df8e5b5b1c86b94a85f158f35c858e9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.26652
+      objectReference: {fileID: 0}
+    - target: {fileID: 9086838084557132000, guid: 2df8e5b5b1c86b94a85f158f35c858e9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.01217
+      objectReference: {fileID: 0}
+    - target: {fileID: 9086838084557132000, guid: 2df8e5b5b1c86b94a85f158f35c858e9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9086838084557132000, guid: 2df8e5b5b1c86b94a85f158f35c858e9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9086838084557132000, guid: 2df8e5b5b1c86b94a85f158f35c858e9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9086838084557132000, guid: 2df8e5b5b1c86b94a85f158f35c858e9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9086838084557132000, guid: 2df8e5b5b1c86b94a85f158f35c858e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9086838084557132000, guid: 2df8e5b5b1c86b94a85f158f35c858e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9086838084557132000, guid: 2df8e5b5b1c86b94a85f158f35c858e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2df8e5b5b1c86b94a85f158f35c858e9, type: 3}
 --- !u!1 &1561893983
 GameObject:
   m_ObjectHideFlags: 0
@@ -15378,7 +15489,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 626005750414661034, guid: cc4d8ee3cc14aa049a20800469a4ed3d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.842026
+      value: -3.85
       objectReference: {fileID: 0}
     - target: {fileID: 626005750414661034, guid: cc4d8ee3cc14aa049a20800469a4ed3d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18580,6 +18691,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1318641334}
   m_SourcePrefab: {fileID: 100100000, guid: 3f0f9edc3d4d74947b32fe984580074f, type: 3}
+--- !u!4 &1988511305 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9086838084557132000, guid: 2df8e5b5b1c86b94a85f158f35c858e9, type: 3}
+  m_PrefabInstance: {fileID: 1552525467}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1991765685 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4731985463978223921, guid: b6eb16e3308c67843aa25bf3abdd844a, type: 3}
@@ -19009,6 +19125,36 @@ MonoBehaviour:
       - m_Target: {fileID: 218441877}
         m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
         m_MethodName: TogglePause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnScrollUp:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1243454232}
+        m_TargetAssemblyTypeName: GunManager, Assembly-CSharp
+        m_MethodName: SwitchUpGun
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnScrollDown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1243454232}
+        m_TargetAssemblyTypeName: GunManager, Assembly-CSharp
+        m_MethodName: SwitchDownGun
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

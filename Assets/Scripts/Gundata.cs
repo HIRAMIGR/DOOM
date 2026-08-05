@@ -1,5 +1,5 @@
 using UnityEngine;
- 
+using UnityEngine.UI;
 [CreateAssetMenu(fileName = "Gundata", menuName = "Scriptable Objects/GunData")]
 public class Gundata : ScriptableObject
 {
@@ -12,7 +12,7 @@ public class Gundata : ScriptableObject
     public string shootSoundName;
     public string reloadSoundName;
     public string dropSoundName;
- 
+    public Sprite sprite;
 }
 public enum GunType
 {

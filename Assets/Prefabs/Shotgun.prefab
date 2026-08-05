@@ -57,6 +57,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0ac523dc8ad6b9d458b6053b812aa2e6, type: 2}
     - target: {fileID: 5953444365455200286, guid: 3c9ea583b6f8d004b8af5e930b7ec3ae, type: 3}
+      propertyPath: gundata
+      value: 
+      objectReference: {fileID: 11400000, guid: 0ac523dc8ad6b9d458b6053b812aa2e6, type: 2}
+    - target: {fileID: 5953444365455200286, guid: 3c9ea583b6f8d004b8af5e930b7ec3ae, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 8277625711690631981}

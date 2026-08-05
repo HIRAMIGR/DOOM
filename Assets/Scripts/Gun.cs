@@ -10,7 +10,8 @@ private Animator animator;
 [SerializeField]
 private Rotate rotateScript;
 [SerializeField]
-private Gundata Gundata;
+private Gundata gundata;
+public Gundata Gundata => gundata;
 [SerializeField]
 private Transform bulletPivot;
 [SerializeField]
@@ -22,28 +23,37 @@ private float nextFireTime;
 private int totalBullets;
 private int cartridgeBullets;
 private UnityEvent onGunEmpty = new UnityEvent();
+public bool IsGunFull => totalBullets == gundata.totalBullets;
 public UnityEvent OnGunEmpty
     {
       set => onGunEmpty = value;
       get => onGunEmpty;  
     }
-public void GrabGun (Transform gunPosition, Text bulletsText)
+public void ChargeTotalBullets()
+    {
+        totalBullets = gundata.totalBullets;
+    }
+public void GrabGun (Transform gunPosition, Text bulletsText, bool isNew = true)
 {
     ammoText = bulletsText;
-nextFireTime = 0f;
-totalBullets = Gundata.totalBullets;
+    nextFireTime = 0f;
+    if (isNew)
+    {
+        totalBullets = gundata.totalBullets;
+        ChargeGun(false);
+    }
 transform.SetParent(gunPosition);
 transform.localPosition = Vector3.zero;
 transform.localRotation = Quaternion.identity;
 animator. Play ("Idle", 0, 0f);
 rotateScript.canRotate = false;
 gameObject.GetComponent<Collider>().enabled = false;
-ChargeGun(false);
+UpdateAmmoText();
 }
     public void ChargeGun(bool playAnimation = true)
     {
-        if (totalBullets <= 0 || cartridgeBullets == Gundata.cartridgeSize) return;
-        SoundManager.instance.Play(Gundata.reloadSoundName);
+        if (totalBullets <= 0 || cartridgeBullets == gundata.cartridgeSize) return;
+        SoundManager.instance.Play(gundata.reloadSoundName);
         if (playAnimation)
         {
             StartCoroutine(ChargeGunCoroutine());
@@ -63,7 +73,7 @@ private IEnumerator ChargeGunCoroutine()
 
 private void AddBullets()
     {
-        cartridgeBullets = Mathf.Min(Gundata.cartridgeSize, totalBullets);
+        cartridgeBullets = Mathf.Min(gundata.cartridgeSize, totalBullets);
         totalBullets -= cartridgeBullets;
         UpdateAmmoText();
     }
@@ -75,7 +85,7 @@ private void AddBullets()
     {
         if (enemy.CompareTag("Enemy"))
         {
-            enemy.GetComponent<Health>().TakeDamage(Gundata.damage);
+            enemy.GetComponent<Health>().TakeDamage(gundata.damage);
         }
     }
 public void Shoot()
@@ -100,19 +110,19 @@ public void Shoot()
         bullet.transform.position = bulletPivot.position;
         bullet.transform.LookAt(targetPoint);
         bullet.SetActive(true);
-        SoundManager.instance.Play(Gundata.shootSoundName);
+        SoundManager.instance.Play(gundata.shootSoundName);
         animator.Play("Shoot", 0, 0f);
     }
     public void HandleFire(bool pressed, bool held)
     {
-        if (Gundata.gunType == GunType.Automatic)
+        if (gundata.gunType == GunType.Automatic)
         {
             if (held)
             {
                 TryShoot();
             }
         }
-        else if (Gundata.gunType == GunType.SemiAutomatic)
+        else if (gundata.gunType == GunType.SemiAutomatic)
         {
             if (pressed)
             {
@@ -124,7 +134,7 @@ public void Shoot()
     {
         if (totalBullets <= 0 && cartridgeBullets <= 0)
         {
-            SoundManager.instance.Play(Gundata.dropSoundName);
+            SoundManager.instance.Play(gundata.dropSoundName);
             onGunEmpty?.Invoke();
             return;
         }
@@ -133,7 +143,7 @@ public void Shoot()
             Shoot();
             cartridgeBullets--;
             UpdateAmmoText();
-            nextFireTime = Time.time + 1f / Gundata.fireRate;
+            nextFireTime = Time.time + 1f / gundata.fireRate;
         }
     }
 }

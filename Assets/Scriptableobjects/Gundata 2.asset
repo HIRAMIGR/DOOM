@@ -21,3 +21,4 @@ MonoBehaviour:
   shootSoundName: shotgun_shot
   reloadSoundName: shotgun_reload
   dropSoundName: throw
+  sprite: {fileID: 21300000, guid: 50ff2612e07205941ae16483871cb424, type: 3}
