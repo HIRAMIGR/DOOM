@@ -21,7 +21,7 @@ public class EnemyTank : Enemy
     {
         base.OnEnable();
         nextFireTime = 0f;
-        animator.Play("Appear", 1, 0f);
+        animator.Play("Appear", 0, 0f);
         SoundManager.instance.Play("MancubusAppear");
     }
     private bool IsInRange()

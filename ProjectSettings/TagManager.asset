@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Gun
   - Enemy
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ShootableObject
   - Water
   - UI
   - 

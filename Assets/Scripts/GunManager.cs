@@ -14,6 +14,10 @@ private Transform gunPosition;
 [SerializeField]
 private Text ammoText;
 [SerializeField]
+private Image gunIcon;
+[SerializeField]
+private Scope scope;
+[SerializeField]
 private InputManager inputManager;
 private Gun currentGun;
 private List<Gun> guns = new List<Gun>();
@@ -40,8 +44,11 @@ public void GrabGun(Gun gun)
         currentGun = gun;
         currentGun.GrabGun(gunPosition, ammoText);
         currentGun.OnGunEmpty.AddListener(DropGun);
+        currentGun.OnGunShoot.AddListener(scope.PlayFireAnimation);
         onGunGrabbed?.Invoke();
         currentGunIndex = guns.IndexOf(currentGun);
+        gunIcon.sprite = currentGun.Gundata.sprite;
+        gunIcon.SetNativeSize();
     }
     public void SwitchUpGun()
     {
@@ -65,9 +72,19 @@ public void GrabGun(Gun gun)
     {
         if (guns.Count <= 1) return;
         currentGun.gameObject.SetActive(false);
-        currentGun = guns[currentGunIndex];
-        currentGun.gameObject.SetActive(true);
-        currentGun.GrabGun(gunPosition,ammoText, false);
+        SetGun();
+    }
+    public void SetGun()
+    {
+    currentGun = guns[currentGunIndex];
+    currentGun.gameObject.SetActive(true);
+    currentGun.GrabGun(gunPosition, ammoText,false);
+    SetIcon(currentGun.Gundata.sprite);
+    }
+    public void SetIcon(Sprite sprite)
+    {
+        gunIcon.sprite = sprite;
+        gunIcon.SetNativeSize();
     }
     public void DropAllGuns()
     {
@@ -82,14 +99,13 @@ public void GrabGun(Gun gun)
     public void DropGun()
     {
         currentGun.OnGunEmpty.RemoveListener(DropGun);
+        currentGun.OnGunShoot.RemoveListener(scope.PlayFireAnimation);
         guns.Remove(currentGun);
         Destroy(currentGun.gameObject);
         if(guns.Count > 0)
         {
             currentGunIndex = guns.Count - 1;
-            currentGun = guns[currentGunIndex];
-            currentGun.gameObject.SetActive(true);
-            currentGun.GrabGun(gunPosition, ammoText, false);
+            SetGun();
         }
         else
         {
@@ -97,13 +113,22 @@ public void GrabGun(Gun gun)
             currentGun = null;
         }
     }
-    private void Update()
+   private void Update()
     {
-        if(currentGun == null) return;
-        currentGun.HandleFire(inputManager.LeftButtonPressed, inputManager.LeftButtonHeld);
+        if (currentGun == null) return;
+        currentGun.HandleFire(inputManager.LeftButtonPressed,
+            inputManager.LeftButtonHeld);
         if (inputManager.RightButtonPressed)
         {
             currentGun.ChargeGun();
+        }
+        if (currentGun.IsAimingEnemy())
+        {
+            scope.ChangeToAimingColor();
+        }
+        else
+        {
+            scope.ChangeToIdleColor();
         }
     }
 }
