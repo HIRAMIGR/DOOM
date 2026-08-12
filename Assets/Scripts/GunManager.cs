@@ -122,7 +122,7 @@ public void GrabGun(Gun gun)
         {
             currentGun.ChargeGun();
         }
-        if (currentGun.IsAimingEnemy())
+        if (currentGun && currentGun.IsAimingEnemy())
         {
             scope.ChangeToAimingColor();
         }
