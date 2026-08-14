@@ -48,7 +48,7 @@ public class FirstPersonMovement : MonoBehaviour
         Vector3 finalVelocity = movementVelocity + knockbackVelocity;
         finalVelocity.y = rigidbody.linearVelocity.y;
         rigidbody.linearVelocity = finalVelocity;
-        knockbackVelocity = Vector3.Lerp(knockbackVelocity, Vector3.zero, knockbackDamping * Time.fixedDeltaTime);
+        knockbackVelocity = Vector3.Lerp(knockbackVelocity, Vector3.zero, knockbackDamping*Time.fixedDeltaTime);
     }
 }
  
