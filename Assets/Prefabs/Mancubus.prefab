@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTank
   animator: {fileID: 1539595355156872446}
   damage: 20
-  range: 6
+  range: 9.46
   fireRate: 4
   shootPivot: {fileID: 8766895208242789481}
   bulletPrefab: {fileID: 959082291226481137, guid: 636d63085a4025b46ba8afb8450292da, type: 3}
